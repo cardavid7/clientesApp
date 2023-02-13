@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
-Backend Aplication is:[clientes-apirest](https://github.com/cardavid7/clientes-apirest)
+Backend Aplication is: [clientes-apirest](https://github.com/cardavid7/clientes-apirest)
 
 ## Development server
 
