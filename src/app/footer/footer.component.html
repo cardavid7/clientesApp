@@ -1,0 +1,10 @@
+<footer class="footer bg-dark rounded-top text-center">
+    <div class="container py-2">
+        <p class="text-white my-2" *ngIf="yearIni == 2023">
+            &copy; Copyright {{ yearIni }}, {{ autor.nombre }} {{ autor.apellido }}
+        </p>
+        <p class="text-white my-2" *ngIf="yearIni > 2023">
+            &copy; Copyright {{ yearIni + ' - ' + yearNow }}, {{ autor.nombre }} {{ autor.apellido }}
+        </p>
+    </div>
+</footer>

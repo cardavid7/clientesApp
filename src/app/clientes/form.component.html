@@ -1,0 +1,61 @@
+<div class="card my-2">
+    <div class="card-header my-2 text-center">{{ title }}</div>
+    <div class="card-body my-2">
+        <form #clienteForm="ngForm">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nombres" placeholder="nombres" [(ngModel)]="cliente.nombres"
+                    name="nombres" required minlength="3" #nombres="ngModel">
+                <label for="nombres">Nombres</label>
+                <div class="alert alert-danger" *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)">
+                    <div *ngIf="nombres.errors?.['required']">
+                        Campo nombres es requerido
+                    </div>
+                    <div *ngIf="nombres.errors?.['minlength']">
+                        Campo nombres debe tener al menos 3 caracteres
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="apellidos" placeholder="apellidos"
+                    [(ngModel)]="cliente.apellidos" name="apellidos" required minlength="3" #apellidos="ngModel">
+                <label for="apellidos">Apellidos</label>
+                <div class="alert alert-danger" *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)">
+                    <div *ngIf="apellidos.errors?.['required']">
+                        Campo apellidos es requerido
+                    </div>
+                    <div *ngIf="apellidos.errors?.['minlength']">
+                        Campo apellidos debe tener al menos 3 caracteres
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" placeholder="name@example.com"
+                    [(ngModel)]="cliente.email" name="email" required email #email="ngModel">
+                <label for="email">Email</label>
+                <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <div *ngIf="email.errors?.['required']">
+                        Campo email es requerido
+                    </div>
+                    <div *ngIf="email.errors?.['email']">
+                        Campo email debe tener un formato valido
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" role="button" (click)="createCliente()"
+                    *ngIf="!cliente.id else elseBlock" [disabled]="!clienteForm.form.valid">Crear Cliente</button>
+
+                <ng-template #elseBlock>
+                    <button class="btn btn-primary" role="button" (click)="updateCliente()"
+                        [disabled]="!clienteForm.form.valid">Editar Cliente</button>
+                </ng-template>
+            </div>
+
+        </form>
+    </div>
+
+</div>

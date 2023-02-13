@@ -1,0 +1,45 @@
+<div class="container my-2">
+    <div class="my-2">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form']">Crear
+            Cliente</button>
+    </div>
+
+    <div class="card border-dark mb-3" style="max-width: flex;">
+        <div class="card-header text-center blond">Listado de Clientes</div>
+        <div class="card-body">
+            <!--undefined !== a && a.length-->
+            <div *ngIf="clientes?.length == 0">No hay clientes en la base de datos!</div>
+            <table class="table" *ngIf="undefined !== clientes && clientes.length > 0">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">CreateAt</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cliente of clientes">
+                        <th scope="row">{{ cliente.id }}</th>
+                        <td>{{ cliente.nombres }}</td>
+                        <td>{{ cliente.apellidos | uppercase }}</td>
+                        <td>{{ cliente.email }}</td>
+                        <td>{{ cliente.createAt | date:'d MMMM, y' }}</td>
+                        <td><button type="button" name="editar" [routerLink]="['/clientes/form', cliente.id]"
+                                class="btn btn-primary">editar</button></td>
+                        <td><button type="button" name="eliminar" (click)="deleteCliente(cliente)"
+                                class="btn btn-danger">eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--div>
+    <p>{{ response.code }}</p>
+    <p>{{ response.message }}</p>
+    <p>{{ response.data }}</p>
+</div-->
